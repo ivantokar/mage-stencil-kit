@@ -1,33 +1,47 @@
 # MageStencilKit
 
-Custom Stencil filters for the [Mage CLI](https://github.com/ivantokar/mage), built with Swift and designed to support flexible code generation for Vapor and SwiftPM projects.
+**MageStencilKit** is a lightweight Swift library that provides a collection of powerful, extensible filters for [Stencil](https://github.com/stencilproject/Stencil) — the Swift templating language.
+
+Originally built for [Mage CLI](https://github.com/yourname/mage), it is designed to work in **any Swift project** that uses Stencil templates: code generators, documentation tools, web template engines, or Swift-based CLI utilities.
 
 ---
 
 ## ✨ Features
 
-- `camelcase`: `user_profile` → `userProfile`
-- `pascalcase`: `user-profile-id` → `UserProfileId`
-- `snakecase`: `UserProfileId` → `user_profile_id`
-- `kebabcase`: `User Profile ID` → `user-profile-id`
-- `pluralize`: `company` → `companies`
-- `titlecase`: `hello world` → `Hello World`
-- `capitalizedFirst`: `vapor` → `Vapor`
-- `isAcronym`: `HTML` → `true`, `Http` → `false`
+- 🪄 `camelcase`: `user_profile_id` → `userProfileId`
+- 🧱 `pascalcase`: `user-profile-id` → `UserProfileId`
+- 🐍 `snakecase`: `UserProfileId` → `user_profile_id`
+- 🧩 `kebabcase`: `User Profile ID` → `user-profile-id`
+- 🔁 `pluralize`: `company` → `companies`
+- 🔠 `titlecase`: `hello world` → `Hello World`
+- 🔡 `capitalizedFirst`: `vapor` → `Vapor`
+- 🔎 `isAcronym`: `HTML` → `true`, `Http` → `false`
+
+---
+
+## 🔁 Input to Output Case Conversions
+
+| Input           | `camelcase`     | `pascalcase`    | `snakecase`       | `kebabcase`       |
+| --------------- | --------------- | --------------- | ----------------- | ----------------- |
+| `UserProfile`   | `userProfile`   | `UserProfile`   | `user_profile`    | `user-profile`    |
+| `user_profile`  | `userProfile`   | `UserProfile`   | `user_profile`    | `user-profile`    |
+| `user-profile`  | `userProfile`   | `UserProfile`   | `user_profile`    | `user-profile`    |
+| `user profile`  | `userProfile`   | `UserProfile`   | `user_profile`    | `user-profile`    |
+| `USERProfileID` | `userProfileId` | `UserProfileId` | `user_profile_id` | `user-profile-id` |
 
 ---
 
 ## 📦 Installation
 
-### As a Swift Package
+### Swift Package Manager
 
 Add to your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/ivantokar/mage-stencil-kit.git", from: "1.0.0")
+.package(url: "https://github.com/yourname/mage-stencil-kit.git", from: "1.0.0")
 ```
 
-And to your target:
+Then to your target dependencies:
 
 ```swift
 .product(name: "MageStencilKit", package: "mage-stencil-kit")
@@ -45,7 +59,7 @@ let env = Environment(loader: ...)
 MageStencilFilters.register(on: env)
 ```
 
-Then use in templates:
+Use in `.stencil` templates:
 
 ```stencil
 {{ "user_profile_id" | camelcase }}       → userProfileId
@@ -57,6 +71,8 @@ Then use in templates:
 
 ## 🧪 Run Tests
 
+We use Swift's new [Testing](https://github.com/apple/swift-testing) framework.
+
 ```bash
 swift test
 ```
@@ -65,4 +81,4 @@ swift test
 
 ## 🔖 License
 
-MIT License. Created with ❤️ for the Mage CLI ecosystem.
+MIT License. Created with ❤️ to make Stencil more expressive in Swift projects.
