@@ -2,8 +2,6 @@
 
 **MageStencilKit** is a lightweight Swift library that provides a collection of powerful, extensible filters for [Stencil](https://github.com/stencilproject/Stencil) — the Swift templating language.
 
-Originally built for [Mage CLI](https://github.com/yourname/mage), it is designed to work in **any Swift project** that uses Stencil templates: code generators, documentation tools, web template engines, or Swift-based CLI utilities.
-
 ---
 
 ## ✨ Features
